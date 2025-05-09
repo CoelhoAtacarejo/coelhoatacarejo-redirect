@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecionamento Coelho Atacarejo</title>
   <script>
-    // Redireciona para o deep link com base no caminho da URL
     window.onload = function() {
+      // Captura o caminho completo da URL
       const path = window.location.pathname;
       const productIdMatch = path.match(/\/produto\/([^\/]+)/);
       const productId = productIdMatch ? productIdMatch[1] : null;
+
       if (productId) {
+        // Redireciona para o deep link com o productId
         window.location.href = `coelhoatacarejo://produto/${productId}`;
       } else {
-        // Fallback: redireciona para a Play Store se não houver ID
+        // Fallback para a Play Store se não houver productId
         window.location.href = "https://play.google.com/store/apps/details?id=com.coelhoatacarejo";
       }
     };
